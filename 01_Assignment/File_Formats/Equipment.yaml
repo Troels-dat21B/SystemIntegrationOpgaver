@@ -1,0 +1,8 @@
+key1: Sword
+key2: Dagger
+key3:
+  - Chest Plate
+  - Leggings
+key4:
+  subkey1: Dagger_Sharp
+  subkey2: Dagger_Dull
