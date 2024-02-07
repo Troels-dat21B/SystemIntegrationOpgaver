@@ -1,8 +1,8 @@
-key1: Sword
-key2: Dagger
-key3:
+Long_Weapon: Sword
+Short_Weapon: Dagger
+Armour:
   - Chest Plate
   - Leggings
-key4:
+Weapon_States:
   subkey1: Dagger_Sharp
   subkey2: Dagger_Dull
