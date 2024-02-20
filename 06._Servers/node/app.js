@@ -1,5 +1,8 @@
-import express from "express";
+import express, { json } from "express";
 import fs from "fs";
+import yaml from "js-yaml";
+import csvParser from "csv-parser";
+import xml2js from "xml2js"
 
 
 const app = express(); //Server instans
@@ -26,44 +29,54 @@ app.get("/", (req, res) => {
 //txt fil
 app.get("/txtRoute", (req, res) => {
     const string =  `../../01_Assignment/File_Formats/${folder[0]}`; //Finder filen i mappen
+    //const fileContent = parse(string);
     const fileContent = fs.readFileSync(string, "utf-8");
-    res.send(fileContent);
+    const jsonData = {fileContent};
+    res.send(jsonData);
 });
 
 //yaml fil
 app.get("/yamlRoute", (req, res) => {
     const string =  `../../01_Assignment/File_Formats/${folder[1]}`; //Finder filen i mappen
     const fileContent = fs.readFileSync(string, "utf-8");
-    res.send(fileContent);
+    const jsonData = yaml.load(fileContent);
+    res.send(jsonData);
 });
 
 //json fil
 app.get("/jsonRoute", (req, res) => {
     const string =  `../../01_Assignment/File_Formats/${folder[2]}`; //Finder filen i mappen
     const fileContent = fs.readFileSync(string, "utf-8");
-    res.send(fileContent);
+    const jsonData = JSON.parse(fileContent);
+    res.send(jsonData);
 });
 
 //csv fil
 app.get("/csvRoute", (req, res) => {
     const string =  `../../01_Assignment/File_Formats/${folder[3]}`; //Finder filen i mappen
-    const fileContent = fs.readFileSync(string, "utf-8");
-    res.send(fileContent);
+    const fileContent = [];
+    fs.createReadStream(string) //Opretter en read stream
+        .pipe(csvParser()) //Piper det til csvParser
+        .on("data", (row) => { //Når der er data i streamen
+            fileContent.push(row); //Pusher dataen til fileContent
+        })
+        .on("end", () => { //Når der ikke er mere data i streamen
+            res.send(fileContent);//Sender fileContent (Eller udføre en anden handling)
+        });
 });
 
-//doc fil
-app.get("/docRoute", (req, res) => {
-    const string =  `../../01_Assignment/File_Formats/${folder[4]}`; //Finder filen i mappen
-    const fileContent = fs.readFileSync(string, "utf-8");
-    res.send(fileContent);
-});
 
 //xml fil
 app.get("/xmlRoute", (req, res) => {
-    const string =  `../../01_Assignment/File_Formats/${folder[5]}`; //Finder filen i mappen
-    console.log(fs.readFileSync(string, "utf-8").toString());
-    const fileContent = fs.readFileSync(string, "utf-8").toString();
-    res.send(fileContent);
+    const string =  `../../01_Assignment/File_Formats/${folder[4]}`; //Finder filen i mappen
+    const fileContent = fs.readFileSync(string, "utf-8");
+    xml2js.parseString(fileContent, (err, result) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        res.send(result);
+    });
 });
 
 
