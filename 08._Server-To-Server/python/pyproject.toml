@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "Server-To-Server-Communication"
+version = "0.1.0"
+description = ""
+authors = ["Troels-dat21B <troe1912@stud.kea.dk>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.109.2"
+uvicorn = "^0.27.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

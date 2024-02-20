@@ -16,13 +16,6 @@ def main():
 filePath = "../01_Assignment/File_Formats"
 folder = os.listdir(filePath)
 
-def read_files():
-    folder = os.listdir(filePath)
-    for file in folder:
-        print(file)
-        with open(f"{filePath}/{file}", mode="r", encoding="utf-8") as file:
-            print(file.read())
-            print("\n")  # Here for extra space in terminal for readability
 
 def read_csv():
     with open(f"{filePath}/{folder[3]}", mode="r") as file:
