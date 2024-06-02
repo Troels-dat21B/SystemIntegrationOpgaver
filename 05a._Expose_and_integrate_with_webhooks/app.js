@@ -10,7 +10,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//FIND WEBHOOKS EKSEMPLER, OG SÆT FIKTIV DATA OP, SÅ EXPOSEE KAN TESTE ENDPOINTS OG FÅ VIST DATA TILBAGE
 
 app.post("/register", (req, res) => {
   const { eventType, endpoint } = req.body;
