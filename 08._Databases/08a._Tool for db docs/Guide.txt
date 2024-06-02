@@ -1,0 +1,6 @@
+How to use MySQL Workbench to document databases
+
+Step 1: Connect to a database
+    - Bruger: itdepartment
+    - Password: hgj%/&gfhJGF684
+Step 2: 
