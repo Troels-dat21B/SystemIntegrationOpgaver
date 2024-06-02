@@ -1,0 +1,18 @@
+Kig på package.json for dependencies og devDependencies.
+
+følgende npm commands for installering
+npm init - for at lave en package.json fil
+npm i express - for express
+npm i nodemon - for nodemon
+npm i --save-dev @babel/cli @babel/core @babel/node @babel/preset-env - for babel
+npm i graphql express-graphql - for graphql og express-graphql pakken, som er en middleware til express
+npm i mongoose - for mongoose. Muligvis npm i mongoose --force, hvis der er problemer med installationen
+
+Neat libraries at have:
+npm i casual - for at generere fake data
+
+I denne applikation er der brugt MongoDB, så det er nødvendigt at have en MongoDB database.
+Jeg har brugt Robo 3T til at se databasen.
+
+Det er ikke muligt at kommentere koden der køre i GraphQL schemas, da det er en string, og det ikke er muligt at kommentere i en string.
+Så kommentare ligger over de strings, hvor det er muligt. Og kan derved være lidt forvirrende at læse.
